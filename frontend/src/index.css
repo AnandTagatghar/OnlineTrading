@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+
+.blueButton {
+  @apply bg-blue-500 p-2 px-5 text-white rounded hover:cursor-pointer hover:opacity-90 active:opacity-100;
+}
+
+.hOneHeading {
+  @apply text-xl sm:text-xl md:text-3xl font-semibold;
+}
+
+.textMuted{
+  @apply text-gray-400;
+}
