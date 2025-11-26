@@ -11,11 +11,11 @@ const Footer = () => {
           </p>
           <p className="textMuted text-sm">All rights reserved.</p>
           <br />
-          <i class="fa-brands fa-twitter"></i> &nbsp;
-          <i class="fa-brands fa-facebook"></i>&nbsp;
-          <i class="fa-brands fa-instagram"></i>&nbsp;
-          <i class="fa-brands fa-linkedin"></i>&nbsp;
-          <i class="fa-brands fa-telegram"></i>
+          <i className="fa-brands fa-twitter"></i> &nbsp;
+          <i className="fa-brands fa-facebook"></i>&nbsp;
+          <i className="fa-brands fa-instagram"></i>&nbsp;
+          <i className="fa-brands fa-linkedin"></i>&nbsp;
+          <i className="fa-brands fa-telegram"></i>
         </div>
 
         <div className="p-10">
@@ -126,7 +126,7 @@ const Footer = () => {
           the related documents carefully before investing.
         </p>
 
-        <p >
+        <p>
           "Prevent unauthorised transactions in your account. Update your mobile
           numbers/email IDs with your stock brokers. Receive information of your
           transactions directly from Exchange on your mobile/email at the end of
@@ -143,6 +143,36 @@ const Footer = () => {
           claiming to be part of Zerodha and offering such services, please
           create a ticket here.
         </p>
+
+        <div className="grid grid-cols-9 gap-2 mx-auto w-[70%] pt-4">
+          <a className="px-2 hover:text-blue-500" href="">
+            NSE
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            BSE
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            MCX
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            Teams & conditions
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            Policies & procedures
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            Privacy policy
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            Disclosure
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            For inverster&apos;s attention
+          </a>
+          <a className="px-2 hover:text-blue-500" href="">
+            Investor charter
+          </a>
+        </div>
       </div>
     </div>
   );

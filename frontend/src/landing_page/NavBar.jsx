@@ -9,7 +9,7 @@ const NavBar = () => {
   }
 
   return (
-    <div className="border-b-gray-400 border">
+    <div className="border-b-gray-400 border-b-1">
       <nav className="p-4">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
@@ -21,7 +21,7 @@ const NavBar = () => {
                 onClick={hamburgerButtonHandler}
               >
                 <span className="sr-only">Open main menu</span>
-                <i class="fa-solid fa-bars"></i>
+                <i className="fa-solid fa-bars"></i>
               </button>
             </div>
 

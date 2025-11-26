@@ -13,7 +13,7 @@ const Education = () => {
         </p>
         <div className="my-3">
           <a className=" text-blue-600 active:opacity-90" href="">
-            Versity <i class="fa-solid fa-arrow-right-long"></i>
+            Versity <i className="fa-solid fa-arrow-right-long"></i>
           </a>
         </div>
 
@@ -23,7 +23,7 @@ const Education = () => {
         </p>
         <div className="mt-3">
           <a className=" text-blue-600 active:opacity-90" href="">
-            Trading Q&A <i class="fa-solid fa-arrow-right-long"></i>
+            Trading Q&A <i className="fa-solid fa-arrow-right-long"></i>
           </a>
         </div>
       </div>

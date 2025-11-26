@@ -13,7 +13,7 @@ const Pricing = () => {
 
           <div className="mt-3">
             <a className=" text-blue-600 active:opacity-90" href="">
-              See pricing <i class="fa-solid fa-arrow-right-long"></i>
+              See pricing <i className="fa-solid fa-arrow-right-long"></i>
             </a>
           </div>
         </div>
