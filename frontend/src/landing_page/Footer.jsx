@@ -21,27 +21,27 @@ const Footer = () => {
         <div className="p-10">
           <h2 className="mb-5">Company</h2>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               About
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Product
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Pricing
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Referal Programme
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Careers
             </a>
           </div>
@@ -50,27 +50,27 @@ const Footer = () => {
         <div className="p-10">
           <h2 className="mb-5">Support</h2>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Contact
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Support Portal
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Z-Connect blog
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               List of charges
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Downloads and resources
             </a>
           </div>
@@ -79,17 +79,17 @@ const Footer = () => {
         <div className="p-10">
           <h2 className="mb-5">Account</h2>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Open an account
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               Fund transfer
             </a>
           </div>
           <div className="pb-2">
-            <a className="textMuted" href="">
+            <a className="text-gray-400 hover:text-blue-500" href="">
               60 day challenge
             </a>
           </div>

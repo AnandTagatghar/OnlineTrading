@@ -9,7 +9,7 @@ const NavBar = () => {
   }
 
   return (
-    <div className="border-b-gray-400 border-b-1">
+    <div className="border-b-gray-400 border-b">
       <nav className="p-4">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
