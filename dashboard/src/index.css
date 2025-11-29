@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.borderBottom {
+  @apply border-b border-b-gray-200;
+}
+
+.textPrimary{
+  @apply text-gray-500;
+}
+
+.textRed{
+  @apply text-red-400
+}
+
+.textGreen{
+  @apply text-green-400
+}
