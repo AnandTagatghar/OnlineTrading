@@ -27,19 +27,17 @@ const Positions = () => {
             let dayClass = stock.day.at(0) == "+" ? "textGreen" : "textRed";
 
             return (
-              <>
-                <tr key={index}>
-                  <td className="py-2">{stock.product}</td>
-                  <td>{stock.name}</td>
-                  <td>{stock.qty}</td>
-                  <td>{stock.avg.toFixed(2)}</td>
-                  <td>{stock.price.toFixed(2)}</td>
-                  <td className={profitClass}>
-                    {(currentVal - stock.avg * stock.qty).toFixed(2)}
-                  </td>
-                  <td className={dayClass}>{stock.day}</td>
-                </tr>
-              </>
+              <tr key={index}>
+                <td className="py-2">{stock.product}</td>
+                <td>{stock.name}</td>
+                <td>{stock.qty}</td>
+                <td>{stock.avg.toFixed(2)}</td>
+                <td>{stock.price.toFixed(2)}</td>
+                <td className={profitClass}>
+                  {(currentVal - stock.avg * stock.qty).toFixed(2)}
+                </td>
+                <td className={dayClass}>{stock.day}</td>
+              </tr>
             );
           })}
         </tbody>

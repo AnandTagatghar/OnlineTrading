@@ -27,7 +27,6 @@ const Holdings = () => {
             let dayClass = stock.day.at(0) == "+" ? "textGreen" : "textRed";
 
             return (
-              <>
                 <tr key={index}>
                   <td className="py-2">{stock.name}</td>
                   <td>{stock.qty}</td>
@@ -40,7 +39,6 @@ const Holdings = () => {
                   <td className={profitClass}>{stock.net}</td>
                   <td className={dayClass}>{stock.day}</td>
                 </tr>
-              </>
             );
           })}
         </tbody>
