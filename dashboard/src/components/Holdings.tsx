@@ -1,32 +1,63 @@
-import { holdings } from "../data/data";
+import { useEffect, useState } from "react";
 import type { holdingsType } from "../types/types";
+import axios from "axios";
 
 const Holdings = () => {
+  const [holdings, setHoldings] = useState<holdingsType[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  async function fetchHoldings() {
+    setLoading(true);
+    try {
+      const holdings = await axios.get("http://localhost:3000/holdings");
+
+      setHoldings(holdings.data.data);
+    } catch (error: any) {
+      console.error(error);
+    }
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchHoldings();
+  }, []);
+
   return (
     <div className="p-5 textPrimary">
       <h1 className="pb-5">Holdings ({holdings.length})</h1>
 
-      <table className="w-full border-spacing-2">
-        <thead className="border-y border-y-gray-200 py-2">
-          <tr>
-            <th className="py-3">Instrument</th>
-            <th>Qty.</th>
-            <th>Avg.cost</th>
-            <th>LTP</th>
-            <th>Cur. val</th>
-            <th>P&L</th>
-            <th>Net chg.</th>
-            <th>Day chg.</th>
-          </tr>
-        </thead>
-        <tbody className="text-sm text-center">
-          {holdings.map((stock: holdingsType, index) => {
-            let currentVal = stock.qty * stock.price;
-            let isProfit = currentVal - stock.avg * stock.qty >= 0.0;
-            let profitClass = isProfit ? "textGreen" : "textRed";
-            let dayClass = stock.day.at(0) == "+" ? "textGreen" : "textRed";
+      {!loading && holdings.length == 0 && (
+        <div className="text-center textPrimary text-2xl">
+          No holdings to display.
+        </div>
+      )}
 
-            return (
+      {loading && (
+        <div className="text-center textPrimary text-2xl">Loading...</div>
+      )}
+
+      {holdings.length > 0 && (
+        <table className="w-full border-spacing-2">
+          <thead className="border-y border-y-gray-200 py-2">
+            <tr>
+              <th className="py-3">Instrument</th>
+              <th>Qty.</th>
+              <th>Avg.cost</th>
+              <th>LTP</th>
+              <th>Cur. val</th>
+              <th>P&L</th>
+              <th>Net chg.</th>
+              <th>Day chg.</th>
+            </tr>
+          </thead>
+          <tbody className="text-sm text-center">
+            {holdings.map((stock: holdingsType, index) => {
+              let currentVal = stock.qty * stock.price;
+              let isProfit = currentVal - stock.avg * stock.qty >= 0.0;
+              let profitClass = isProfit ? "textGreen" : "textRed";
+              let dayClass = stock.day.at(0) == "+" ? "textGreen" : "textRed";
+
+              return (
                 <tr key={index}>
                   <td className="py-2">{stock.name}</td>
                   <td>{stock.qty}</td>
@@ -39,10 +70,11 @@ const Holdings = () => {
                   <td className={profitClass}>{stock.net}</td>
                   <td className={dayClass}>{stock.day}</td>
                 </tr>
-            );
-          })}
-        </tbody>
-      </table>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

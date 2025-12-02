@@ -1,8 +1,15 @@
 const express = require("express");
+const cors = require("cors");
 const Holdings = require("./models/handlings.model");
 const Positions = require("./models/positions.model");
+const holdingsRouter = require("./routers/holdings.router");
+const positionsRouter = require("./routers/positions.router");
 
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
   let holdingsData = [
@@ -158,5 +165,8 @@ app.get("/", async (req, res) => {
     res.send(error.message);
   }
 });
+
+app.use("/holdings", holdingsRouter);
+app.use("/positions", positionsRouter);
 
 module.exports = app;

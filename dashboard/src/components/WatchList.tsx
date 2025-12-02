@@ -10,6 +10,7 @@ import {
 } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import { useBuyContext, useSellContext } from "../Context/Provider";
 
 const WatchList = () => {
   return (
@@ -44,20 +45,14 @@ const WatchList = () => {
 
 export default WatchList;
 
-const WatchListItem = ({
-  item,
-  index,
-}: {
-  item: watchListType;
-  index: number;
-}) => {
+const WatchListItem = ({ item }: { item: watchListType; index: number }) => {
   const [isHoverActive, SetISHoverActive] = useState<boolean>(false);
 
-  function handleMouseEnter(id: number) {
+  function handleMouseEnter() {
     SetISHoverActive(true);
   }
 
-  function handleMouseMoved(id: number) {
+  function handleMouseMoved() {
     SetISHoverActive(false);
   }
 
@@ -66,8 +61,8 @@ const WatchListItem = ({
   return (
     <div
       className="flex justify-around items-center textPrimary borderBottom pt-10 pb-5 text-sm relative"
-      onMouseEnter={() => handleMouseEnter(index)}
-      onMouseLeave={() => handleMouseMoved(index)}
+      onMouseEnter={() => handleMouseEnter()}
+      onMouseLeave={() => handleMouseMoved()}
     >
       <p className={textColor}>{item.name}</p>
       <p>
@@ -94,51 +89,68 @@ const WatchListHoverItem = ({
 }: {
   itemDetails: watchListType;
 }) => {
+  const [buyContainer, setBuyContainer] = useState<boolean>(false);
+  const [sellContainer, setSellContainer] = useState<boolean>(false);
+  const buyContext = useBuyContext();
+  const sellContext = useSellContext();
+
+  const handleBuyStock = () => {
+    setBuyContainer(true);
+    buyContext.updateData(itemDetails);
+  };
+
+  const handleSellStock = () => {
+    setSellContainer(true);
+    sellContext.updateSellData(itemDetails);
+  };
+
   return (
-    <div className="w-full px-5 absolute flex">
-      <div className="flex-1"></div>
+    <>
+      <div className="w-full px-5 absolute flex">
+        <div className="flex-1"></div>
 
-      <div>
-        <Tooltip title="Buy">
-          <IconButton>
-            <span className="text-sm bg-blue-400 py-1 px-3 rounded text-white font-bold">
-              B
-            </span>
-          </IconButton>
-        </Tooltip>
+        <div>
+          <Tooltip title="Buy" onClick={handleBuyStock}>
+            <IconButton>
+              <span className="text-sm bg-blue-400 py-1 px-3 rounded text-white font-bold">
+                B
+              </span>
+            </IconButton>
+          </Tooltip>
 
-        <Tooltip title="Sell">
-          <IconButton>
-            <span className="text-sm bg-orange-400 py-1 px-3 rounded text-white font-bold">
-              S
-            </span>
-          </IconButton>
-        </Tooltip>
+          <Tooltip title="Sell" onClick={handleSellStock}>
+            <IconButton>
+              <span className="text-sm bg-orange-400 py-1 px-3 rounded text-white font-bold">
+                S
+              </span>
+            </IconButton>
+          </Tooltip>
 
-        <Tooltip title="Graph">
-          <IconButton>
-            <span className=" px-2 text-sm border border-black bg-white rounded font-bold">
-              <Equalizer />
-            </span>
-          </IconButton>
-        </Tooltip>
+          <Tooltip title="Graph">
+            <IconButton>
+              <span className=" px-2 text-sm border border-black bg-white rounded font-bold">
+                <Equalizer />
+              </span>
+            </IconButton>
+          </Tooltip>
 
-        <Tooltip title="Delete">
-          <IconButton>
-            <span className=" px-2 text-sm border border-black bg-white rounded font-bold">
-              <Delete />
-            </span>
-          </IconButton>
-        </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton>
+              <span className=" px-2 text-sm border border-black bg-white rounded font-bold">
+                <Delete />
+              </span>
+            </IconButton>
+          </Tooltip>
 
-        <Tooltip title="More">
-          <IconButton>
-            <span className=" px-2 text-sm border border-black bg-white rounded font-bold">
-              <MoreHoriz />
-            </span>
-          </IconButton>
-        </Tooltip>
+          <Tooltip title="More">
+            <IconButton>
+              <span className=" px-2 text-sm border border-black bg-white rounded font-bold">
+                <MoreHoriz />
+              </span>
+            </IconButton>
+          </Tooltip>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
