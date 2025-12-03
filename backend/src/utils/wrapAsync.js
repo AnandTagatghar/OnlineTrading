@@ -1,6 +1,6 @@
 function AsyncWrap(requestHandler) {
   return (req, res, next) => {
-    requestHandler(req, res, next).catch(next);
+    Promise.resolve(requestHandler(req, res, next)).catch(next);
   };
 }
 

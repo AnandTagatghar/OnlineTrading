@@ -4,6 +4,7 @@ const Holdings = require("./models/handlings.model");
 const Positions = require("./models/positions.model");
 const holdingsRouter = require("./routers/holdings.router");
 const positionsRouter = require("./routers/positions.router");
+const ordersRouter = require("./routers/orders.router");
 
 const app = express();
 
@@ -168,5 +169,14 @@ app.get("/", async (req, res) => {
 
 app.use("/holdings", holdingsRouter);
 app.use("/positions", positionsRouter);
+app.use("/orders", ordersRouter);
+
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    message: err.message || "Something went wrong",
+    statusCode: 500,
+    status: false,
+  });
+});
 
 module.exports = app;

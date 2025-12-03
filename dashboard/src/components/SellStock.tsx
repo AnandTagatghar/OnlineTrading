@@ -1,15 +1,38 @@
-import Box from "@mui/material/Box";
-import NumberField from "./NumberField";
+import TextField from "@mui/material/TextField";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 import type { watchListType } from "../types/types";
 import { useSellContext } from "../Context/Provider";
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const SellStock = ({ itemDetails }: { itemDetails: watchListType }) => {
-  const sellContext = useSellContext();
+  const sellContest = useSellContext();
+  const navigate = useNavigate();
+
+  const [quantity, setQuantity] = useState<Number | null>(null);
+  const [price, setPrice] = useState<Number | null>(null);
 
   function handleCancelButton() {
-    sellContext.updateSellData(null);
+    sellContest.updateSellData(null);
+  }
+
+  async function handleBuyButton() {
+    try {
+      await axios.post("http://localhost:3000/orders/sell", {
+        quantity: quantity,
+        price: price,
+        name: itemDetails.name,
+        mode: "sell",
+      });
+
+      navigate("/holdings");
+    } catch (error) {
+      console.error(error);
+    }
+
+    sellContest.updateSellData(null);
   }
 
   return (
@@ -18,20 +41,27 @@ const SellStock = ({ itemDetails }: { itemDetails: watchListType }) => {
         <h1 className="text-xl font-bold mb-10">{itemDetails.name}</h1>
 
         <div className="pb-3">
-          <Box sx={{ display: "grid", gap: 4 }}>
-            <NumberField label="Qty." min={0} size="small" defaultValue={2} />
-          </Box>
+          <TextField
+            id="outlined-basic"
+            label="Qty."
+            variant="outlined"
+            onChange={(e) => {
+              setQuantity(Number(e.target.value));
+            }}
+            type="Number"
+          />
         </div>
 
         <div className="pb-3">
-          <Box sx={{ display: "grid", gap: 4 }}>
-            <NumberField
-              label="Price"
-              min={0}
-              size="small"
-              defaultValue={500}
-            />
-          </Box>
+          <TextField
+            id="outlined-basic"
+            label="Price"
+            variant="outlined"
+            type="Number"
+            onChange={(e) => {
+              setPrice(Number(e.target.value));
+            }}
+          />
         </div>
 
         <div className="pt-3">
@@ -40,7 +70,9 @@ const SellStock = ({ itemDetails }: { itemDetails: watchListType }) => {
             variant="contained"
             aria-label="Disabled button group"
           >
-            <Button sx={{ textTransform: "none" }}>Sell</Button>
+            <Button sx={{ textTransform: "none" }} onClick={handleBuyButton}>
+              Sell
+            </Button>
             <Button
               color="inherit"
               sx={{ textTransform: "none" }}

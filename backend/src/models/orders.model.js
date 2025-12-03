@@ -11,21 +11,22 @@ const orderSchema = new Schema({
   },
   price: {
     type: Number,
-    min: 0,
+    min: 1,
     requried: [true, "Please provide price!"],
   },
-  percent: {
-    type: String,
+  quantity: {
+    type: Number,
     trim: true,
+    min: 1,
     required: [true, "Please provide percentage!"],
   },
   mode: {
     type: String,
-    enum:["buy", "sell"],
+    enum: ["buy", "sell"],
     required: [true, "Please provde isDown!"],
   },
 });
 
-const Orders = model("Order", wishlistSchema);
+const Orders = model("Order", orderSchema);
 
 module.exports = Orders;
